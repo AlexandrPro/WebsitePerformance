@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebsitePerformance", "Websi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebsitePerformance.DAL", "WebsitePerformance.DAL\WebsitePerformance.DAL.csproj", "{B7A83963-722F-4AA8-A707-340402E4BE95}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebsitePerformance.Contracts", "WebsitePerformance.Contracts\WebsitePerformance.Contracts.csproj", "{812B5DB4-6800-42DC-9D0F-3F8F5FE027AD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{B7A83963-722F-4AA8-A707-340402E4BE95}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B7A83963-722F-4AA8-A707-340402E4BE95}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B7A83963-722F-4AA8-A707-340402E4BE95}.Release|Any CPU.Build.0 = Release|Any CPU
+		{812B5DB4-6800-42DC-9D0F-3F8F5FE027AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{812B5DB4-6800-42DC-9D0F-3F8F5FE027AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{812B5DB4-6800-42DC-9D0F-3F8F5FE027AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{812B5DB4-6800-42DC-9D0F-3F8F5FE027AD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

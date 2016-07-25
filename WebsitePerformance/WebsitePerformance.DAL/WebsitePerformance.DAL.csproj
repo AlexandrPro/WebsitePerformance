@@ -71,7 +71,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="Model\links.cs" />
     <Compile Include="Model\Model.cs" />
     <Compile Include="Model\website.cs" />
