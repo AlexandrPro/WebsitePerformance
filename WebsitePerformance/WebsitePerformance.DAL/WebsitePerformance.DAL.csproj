@@ -71,6 +71,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EFRepository.cs" />
     <Compile Include="Model\links.cs" />
     <Compile Include="Model\Model.cs" />
     <Compile Include="Model\website.cs" />
@@ -82,7 +83,12 @@
     </None>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\WebsitePerformance.Contracts\WebsitePerformance.Contracts.csproj">
+      <Project>{812b5db4-6800-42dc-9d0f-3f8f5fe027ad}</Project>
+      <Name>WebsitePerformance.Contracts</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
