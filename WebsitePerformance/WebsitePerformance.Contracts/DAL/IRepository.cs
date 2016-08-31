@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace WebsitePerformance.Contracts.DAL
 {
-    interface IRepository<T> where T: class 
+    public interface IRepository<T> where T: class 
     {
         T Add(T entity);
         void Update(T entity);

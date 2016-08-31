@@ -55,3 +55,4 @@ C:\Users\Aleks_000\Documents\GitHub\WebsitePerformance\WebsitePerformance\Websit
 C:\Users\Aleks_000\Documents\GitHub\WebsitePerformance\WebsitePerformance\WebsitePerformance\bin\MySql.Data.dll
 C:\Users\Aleks_000\Documents\GitHub\WebsitePerformance\WebsitePerformance\WebsitePerformance\bin\MySql.Data.Entity.EF6.dll
 C:\Users\Aleks_000\Documents\GitHub\WebsitePerformance\WebsitePerformance\WebsitePerformance\bin\EntityFramework.xml
+C:\Users\Aleks_000\Documents\GitHub\WebsitePerformance\WebsitePerformance\WebsitePerformance\obj\Debug\WebsitePerformance.csprojResolveAssemblyReference.cache
