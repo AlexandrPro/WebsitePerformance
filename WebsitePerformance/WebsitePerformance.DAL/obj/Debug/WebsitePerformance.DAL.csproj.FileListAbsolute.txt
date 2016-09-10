@@ -17,3 +17,5 @@ C:\Users\Aleks_000\Documents\GitHub\WebsitePerformance\WebsitePerformance\Websit
 C:\Users\Aleks_000\Documents\GitHub\WebsitePerformance\WebsitePerformance\WebsitePerformance.DAL\obj\Debug\WebsitePerformance.DAL.dll
 C:\Users\Aleks_000\Documents\GitHub\WebsitePerformance\WebsitePerformance\WebsitePerformance.DAL\obj\Debug\WebsitePerformance.DAL.pdb
 C:\Users\Aleks_000\Documents\GitHub\WebsitePerformance\WebsitePerformance\WebsitePerformance.DAL\obj\Debug\WebsitePerformance.DAL.csprojResolveAssemblyReference.cache
+C:\Users\Aleks_000\Documents\GitHub\WebsitePerformance\WebsitePerformance\WebsitePerformance.DAL\bin\Debug\WebsitePerformance.Contracts.dll
+C:\Users\Aleks_000\Documents\GitHub\WebsitePerformance\WebsitePerformance\WebsitePerformance.DAL\bin\Debug\WebsitePerformance.Contracts.pdb

@@ -12,7 +12,7 @@ namespace WebsitePerformance.DAL.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public website()
         {
-            links = new HashSet<links>();
+            links = new HashSet<link>();
         }
 
         public int id { get; set; }
@@ -22,6 +22,6 @@ namespace WebsitePerformance.DAL.Model
         public string url { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<links> links { get; set; }
+        public virtual ICollection<link> links { get; set; }
     }
 }

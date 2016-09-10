@@ -34,9 +34,8 @@ DEFAULT CHARACTER SET = utf8;
 CREATE TABLE IF NOT EXISTS `website_performance`.`links` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `url` VARCHAR(50) NOT NULL,
-  `s` INT(2) NULL DEFAULT NULL,
-  `ms` INT(3) NULL DEFAULT NULL,
   `site_id` INT(11) NOT NULL,
+  `test_count` INT(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   INDEX `fk_links_to_websites_idx` (`site_id` ASC),
   CONSTRAINT `fk_links_to_websites`
@@ -44,6 +43,26 @@ CREATE TABLE IF NOT EXISTS `website_performance`.`links` (
     REFERENCES `website_performance`.`website` (`id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
+-- Table `website_performance`.`test`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `website_performance`.`test` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `link_id` INT(11) NOT NULL,
+  `number` INT(11) NOT NULL,
+  `s` INT(2) NOT NULL,
+  `ms` INT(3) NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_test_to_link_idx` (`link_id` ASC),
+  CONSTRAINT `fk_test_to_link`
+    FOREIGN KEY (`link_id`)
+    REFERENCES `website_performance`.`links` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
