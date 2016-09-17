@@ -4,7 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
-using WebsitePerformance.Contracts.DAL;
+using WebsitePerformance.ContractsBetweenBLLandDAL.Entities;
+using WebsitePerformance.ContractsBetweenBLLandDAL.DAL;
 using System.Linq.Expressions;
 using System.Threading;
 

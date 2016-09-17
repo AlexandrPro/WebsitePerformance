@@ -1,10 +1,6 @@
-namespace WebsitePerformance.DAL.Model
+namespace WebsitePerformance.ContractsBrtweenBLLandDAL.Entities
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
 
     [Table("website_performance.test")]
     public partial class test

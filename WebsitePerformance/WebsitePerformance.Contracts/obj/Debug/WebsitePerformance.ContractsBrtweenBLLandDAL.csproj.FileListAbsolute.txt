@@ -1,0 +1,3 @@
+C:\Users\Aleks_000\Documents\GitHub\WebsitePerformance\WebsitePerformance\WebsitePerformance.Contracts\obj\Debug\WebsitePerformance.ContractsBrtweenBLLandDAL.csprojResolveAssemblyReference.cache
+C:\Users\Aleks_000\Documents\GitHub\WebsitePerformance\WebsitePerformance\WebsitePerformance.Contracts\obj\Debug\WebsitePerformance.Contracts.dll
+C:\Users\Aleks_000\Documents\GitHub\WebsitePerformance\WebsitePerformance\WebsitePerformance.Contracts\obj\Debug\WebsitePerformance.Contracts.pdb

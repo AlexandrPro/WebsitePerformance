@@ -1,0 +1,4 @@
+C:\Users\Aleks_000\Documents\GitHub\WebsitePerformance\WebsitePerformance\WebsitePerformance.ContractsBetweenBLLandDAL\bin\Debug\WebsitePerformance.ContractsBetweenBLLandDAL.dll
+C:\Users\Aleks_000\Documents\GitHub\WebsitePerformance\WebsitePerformance\WebsitePerformance.ContractsBetweenBLLandDAL\bin\Debug\WebsitePerformance.ContractsBetweenBLLandDAL.pdb
+C:\Users\Aleks_000\Documents\GitHub\WebsitePerformance\WebsitePerformance\WebsitePerformance.ContractsBetweenBLLandDAL\obj\Debug\WebsitePerformance.ContractsBetweenBLLandDAL.dll
+C:\Users\Aleks_000\Documents\GitHub\WebsitePerformance\WebsitePerformance\WebsitePerformance.ContractsBetweenBLLandDAL\obj\Debug\WebsitePerformance.ContractsBetweenBLLandDAL.pdb

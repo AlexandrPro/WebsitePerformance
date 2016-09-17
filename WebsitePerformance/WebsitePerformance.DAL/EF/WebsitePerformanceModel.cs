@@ -1,9 +1,10 @@
-namespace WebsitePerformance.DAL.Model
+namespace WebsitePerformance.DAL.EF
 {
     using System;
     using System.Data.Entity;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
+    using WebsitePerformance.ContractsBetweenBLLandDAL.Entities;
 
     public partial class WebsitePerformanceModel : DbContext
     {
