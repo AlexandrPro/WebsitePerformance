@@ -11,11 +11,6 @@ using System.Threading;
 
 namespace WebsitePerformance.DAL
 {
-    public static class LockContainer
-    {
-        public static readonly object LockObject = new object();
-    }
-
     class EFRepository<T> : IRepository<T> where T: class
     {
         private readonly DbContext _context;
@@ -27,101 +22,36 @@ namespace WebsitePerformance.DAL
             _entities = context.Set<T>();
         }
 
-        public T Add(T entity)
+        public void Create(T entity)
         {
-            try
-            {
-                Monitor.Enter(LockContainer.LockObject);
-                var newEntity = _entities.Create();
-                _entities.Add(newEntity);
-                _context.Entry(newEntity).CurrentValues.SetValues(entity);
-                //_context.SaveChanges();
-                return newEntity;
-            }
-            finally
-            {
-                Monitor.Exit(LockContainer.LockObject);
-            }
+            _entities.Add(entity);
         }
 
         public void Delete(int id)
         {
-            try
-            {
-                Monitor.Enter(LockContainer.LockObject);
-                var entity = FindById(id);
+            var entity = Get(id);
+            if (entity != null)
                 _entities.Remove(entity);
-                //_context.SaveChanges();
-            }
-            finally
-            {
-                Monitor.Exit(LockContainer.LockObject);
-            }
         }
 
         public void Update(T entity)
         {
-            //TODO: Test, rework if need 
-            SaveChanges();
+            _context.Entry(entity).State = EntityState.Modified;
         }
 
-        public IQueryable<T> Find(Expression<Func<T, bool>> expression)
+        public IEnumerable<T> Find(Func<T, Boolean> predicate)
         {
-            IQueryable<T> data;
-            try
-            {
-                Monitor.Enter(LockContainer.LockObject);
-                data = _entities.Where(expression);
-            }
-            finally
-            {
-                Monitor.Exit(LockContainer.LockObject);
-            }
-            return data;
+            return _entities.Where(predicate).ToList();
         }
 
-        public T FindById(int id)
+        public T Get(int id)
         {
-            T data;
-            try
-            {
-                Monitor.Enter(LockContainer.LockObject);
-                data = _entities.Find(id);
-            }
-            finally
-            {
-                Monitor.Exit(LockContainer.LockObject);
-            }
-
-            return data;
+            return _entities.Find(id);
         }
 
-        public IQueryable<T> GetAll()
+        public IEnumerable<T> GetAll()
         {
-            IQueryable<T> data;
-            try
-            {
-                Monitor.Enter(LockContainer.LockObject);
-                data = _entities.Where(o => true);
-            }
-            finally
-            {
-                Monitor.Exit(LockContainer.LockObject);
-            }
-            return data;
-        }
-
-        public void SaveChanges()
-        {
-            try
-            {
-                Monitor.Enter(LockContainer.LockObject);
-                _context.SaveChanges();
-            }
-            finally
-            {
-                Monitor.Exit(LockContainer.LockObject);
-            }
+            return _entities.Where(o => true);
         }
     }
 }
