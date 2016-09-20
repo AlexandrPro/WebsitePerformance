@@ -41,10 +41,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WebsiteAccess\LinkResponseTime.cs" />
+    <Compile Include="WebsiteAccess\Sitemap.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Services\" />
-    <Folder Include="Validator\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\WebsitePerformance.ContractsBetweenBLLandDAL\WebsitePerformance.ContractsBetweenBLLandDAL.csproj">

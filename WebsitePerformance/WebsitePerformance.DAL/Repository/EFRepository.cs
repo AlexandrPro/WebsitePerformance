@@ -2,107 +2,51 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Data.Entity;
-using System.Text;
-using System.Threading.Tasks;
 using WebsitePerformance.ContractsBetweenBLLandDAL.DAL;
 
 namespace WebsitePerformance.DAL.Repository
 {
-    public class EFRepository<T> : IRepository<T> where T : class
+    class EFRepository<T> : IRepository<T> where T: class
     {
         private readonly DbContext _context;
         private readonly IDbSet<T> _entities;
-
+        
         public EFRepository(DbContext context)
         {
             _context = context;
             _entities = context.Set<T>();
         }
 
-        public T Add(T entity)
+        public void Create(T entity)
         {
-            var newEntity = _entities.Create();
-            _entities.Add(newEntity);
-            _context.Entry(newEntity).CurrentValues.SetValues(entity);
-            return newEntity;
-        }
-
-        public void Update(T entity)
-        {
-            SaveChanges();
+            _entities.Add(entity);
         }
 
         public void Delete(int id)
         {
-            try
-            {
-                Monitor.Enter(LockContainer.LockObject);
-                var entity = FindById(id);
+            var entity = Get(id);
+            if (entity != null)
                 _entities.Remove(entity);
-            }
-            finally
-            {
-                Monitor.Exit(LockContainer.LockObject);
-            }
         }
 
-        public IQueryable<T> GetAll()
+        public void Update(T entity)
         {
-            IQueryable<T> data;
-            try
-            {
-                Monitor.Enter(LockContainer.LockObject);
-                data = _entities.Where(o => true);
-            }
-            finally
-            {
-                Monitor.Exit(LockContainer.LockObject);
-            }
-            return data;
+            _context.Entry(entity).State = EntityState.Modified;
         }
 
-        public IQueryable<T> Find(Expression<Func<T, bool>> expression)
+        public IEnumerable<T> Find(Func<T, Boolean> predicate)
         {
-            IQueryable<T> data;
-            try
-            {
-                Monitor.Enter(LockContainer.LockObject);
-                data = _entities.Where(expression);
-            }
-            finally
-            {
-                Monitor.Exit(LockContainer.LockObject);
-            }
-            return data;
+            return _entities.Where(predicate).ToList();
         }
 
         public T Get(int id)
         {
-            T data;
-            try
-            {
-                Monitor.Enter(LockContainer.LockObject);
-                data = _entities.Find(id);
-            }
-            finally
-            {
-                Monitor.Exit(LockContainer.LockObject);
-            }
-
-            return data;
+            return _entities.Find(id);
         }
 
-        public void SaveChanges()
+        public IEnumerable<T> GetAll()
         {
-            try
-            {
-                Monitor.Enter(LockContainer.LockObject);
-                _context.SaveChanges();
-            }
-            finally
-            {
-                Monitor.Exit(LockContainer.LockObject);
-            }
+            return _entities.Where(o => true);
         }
     }
 }

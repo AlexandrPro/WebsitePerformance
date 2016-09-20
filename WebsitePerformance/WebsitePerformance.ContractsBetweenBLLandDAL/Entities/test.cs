@@ -11,9 +11,7 @@ namespace WebsitePerformance.ContractsBetweenBLLandDAL.Entities
 
         public int number { get; set; }
 
-        public int s { get; set; }
-
-        public int ms { get; set; }
+        public float time { get; set; }
 
         public virtual link link { get; set; }
     }

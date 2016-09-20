@@ -1,17 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace WebsitePerformance.Contracts.DTO
 {
     class LinkViewModel
     {
         public int Id { get; set; }
+
+        [Required]
+        [StringLength(50)]
         public string Url { get; set; }
-        public int LastButOneTest { get; set; } //предпоследний
-        public int LastTest { get; set; } //последний
-        public int NewTest { get; set; }
+
+        [Required]
+        public double LastTest { get; set;}
+
+        [Required]
+        public double NewTest { get; set; }
     }
 }
