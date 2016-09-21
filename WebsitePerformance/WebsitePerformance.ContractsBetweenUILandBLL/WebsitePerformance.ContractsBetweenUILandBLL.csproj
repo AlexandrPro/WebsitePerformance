@@ -43,7 +43,6 @@
   <ItemGroup>
     <Compile Include="DTO\LinkViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\IAddable.cs" />
     <Compile Include="Services\ILinkService.cs" />
     <Compile Include="Services\IWebsiteService.cs" />
   </ItemGroup>

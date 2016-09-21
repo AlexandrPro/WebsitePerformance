@@ -1,9 +1,9 @@
-﻿using WebsitePerformance.Contracts.DTO;
+﻿using WebsitePerformance.ContractsBetweenUILandBLL.DTO;
 
-namespace WebsitePerformance.Contracts.Services
+namespace WebsitePerformance.ContractsBetweenUILandBLL.Services
 {
-    interface ILinkService : IAddable<string>
+    public interface ILinkService
     {
-       LinkViewModel TestLinkPerformance(string url);
+       LinkViewModel ViewLinkPerformance(string url);
     }
 }

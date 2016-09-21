@@ -7,13 +7,13 @@ using System.Xml;
 using System.IO;
 using System.Net;
 
-namespace WebsitePerformance.Business.WebsiteAccess
+namespace WebsitePerformance.BLL.WebsiteAccess
 {
     public class Sitemap
     {
         string sitemapUrl;
 
-        Sitemap(string url)
+        public Sitemap(string url)
         {
             sitemapUrl = url;
         }
@@ -25,7 +25,7 @@ namespace WebsitePerformance.Business.WebsiteAccess
 
         private List<string> SearchLinks(string sitemapLink)
         {
-            //load XML from URL
+            //load sitemap.xml from URL
             WebClient client = new WebClient();
             Stream stream = client.OpenRead(sitemapLink);
             XmlDocument sitemap = new XmlDocument();

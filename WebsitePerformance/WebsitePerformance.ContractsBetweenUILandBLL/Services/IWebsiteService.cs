@@ -1,9 +1,9 @@
 ﻿using System.Linq;
-using WebsitePerformance.Contracts.DTO;
+using WebsitePerformance.ContractsBetweenUILandBLL.DTO;
 
-namespace WebsitePerformance.Contracts.Services
+namespace WebsitePerformance.ContractsBetweenUILandBLL.Services
 {
-    interface IWebsiteService : IAddable<string>
+    public interface IWebsiteService
     {
         IQueryable<LinkViewModel> TestWebsitePerformance(string url);
     }

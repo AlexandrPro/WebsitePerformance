@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace WebsitePerformance.Contracts.DTO
+namespace WebsitePerformance.ContractsBetweenUILandBLL.DTO
 {
-    class LinkViewModel
+    public class LinkViewModel
     {
         public int Id { get; set; }
 

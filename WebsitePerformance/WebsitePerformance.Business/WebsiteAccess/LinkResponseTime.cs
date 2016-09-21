@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using System.Net;
 
-namespace WebsitePerformance.Business.WebsiteAccess
+namespace WebsitePerformance.BLL.WebsiteAccess
 {
     public class LinkResponseTime
     {
@@ -10,14 +10,14 @@ namespace WebsitePerformance.Business.WebsiteAccess
         HttpWebRequest request;
         Stopwatch stopWatch;
 
-        LinkResponseTime(string link)
+        public LinkResponseTime(string link)
         {
             this.link = link;
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(link);
             Stopwatch stopWatch = new Stopwatch();
         }
 
-        public double Measure(string link)
+        public float Measure()
         {
             stopWatch.Start();
             using (WebResponse response = request.GetResponse())
@@ -27,7 +27,7 @@ namespace WebsitePerformance.Business.WebsiteAccess
 
             TimeSpan ts = stopWatch.Elapsed;
 
-            double time = (double)ts.Seconds + (double)ts.Milliseconds / 1000.0;
+            float time = (float)ts.Seconds + (float)ts.Milliseconds / 1000.0f;
             return time;
         }
     }

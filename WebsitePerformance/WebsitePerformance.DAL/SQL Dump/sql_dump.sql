@@ -54,8 +54,7 @@ CREATE TABLE IF NOT EXISTS `website_performance`.`test` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `link_id` INT(11) NOT NULL,
   `number` INT(11) NOT NULL,
-  `s` INT(2) NOT NULL,
-  `ms` INT(3) NOT NULL,
+  `time` FLOAT NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_test_to_link_idx` (`link_id` ASC),
   CONSTRAINT `fk_test_to_link`

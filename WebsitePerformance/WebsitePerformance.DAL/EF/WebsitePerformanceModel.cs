@@ -4,6 +4,7 @@ namespace WebsitePerformance.DAL.EF
     using System.Data.Entity;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
+    using WebsitePerformance.ContractsBetweenBLLandDAL.Entities;
 
     public partial class WebsitePerformanceModel : DbContext
     {
@@ -12,19 +13,19 @@ namespace WebsitePerformance.DAL.EF
         {
         }
 
-        public virtual DbSet<links> links { get; set; }
+        public virtual DbSet<link> link { get; set; }
         public virtual DbSet<test> test { get; set; }
         public virtual DbSet<website> website { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<links>()
+            modelBuilder.Entity<link>()
                 .Property(e => e.url)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<links>()
-                .HasMany(e => e.test)
-                .WithRequired(e => e.links)
+            modelBuilder.Entity<link>()
+                .HasMany(e => e.tests)
+                .WithRequired(e => e.link)
                 .HasForeignKey(e => e.link_id)
                 .WillCascadeOnDelete(false);
 
