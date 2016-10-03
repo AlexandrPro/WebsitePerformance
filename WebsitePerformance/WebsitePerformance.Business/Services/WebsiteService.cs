@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using WebsitePerformance.ContractsBetweenBLLandDAL.DAL;
 using WebsitePerformance.ContractsBetweenBLLandDAL.Entities;
 using WebsitePerformance.ContractsBetweenUILandBLL.Services;
@@ -14,12 +11,14 @@ namespace WebsitePerformance.Business.Services
     public class WebsiteService : IWebsiteService
     {
         IUnitOfWork db;
+        string website_url { get; set; }
+
         public WebsiteService(IUnitOfWork uow)
         {
             this.db = uow;
         }
 
-        public website SearchOrAddWebsiteOnDb(string _url) 
+        private website SearchOrAddWebsiteOnDb(string _url) 
         {
             //TODO: Add validation website
             website _website = db.Websites.Find(w => (w.url == _url)).First();
@@ -32,7 +31,7 @@ namespace WebsitePerformance.Business.Services
             return _website;
         }
 
-        public link SearchOrAddLinkOnDb(int website_id, string _url)
+        private link SearchOrAddLinkOnDb(int website_id, string _url)
         {
             //TODO: Add validation link
             link _link = db.Links.Find(l => (l.site_id == website_id && l.url == _url)).First();
@@ -43,7 +42,7 @@ namespace WebsitePerformance.Business.Services
             return _link;
         }
 
-        public test AddTestOnDb(link _link, float testTime)
+        private test AddTestOnDb(link _link, float testTime)
         {
             //TODO: Add validation test
             _link.test_count++;
@@ -54,7 +53,7 @@ namespace WebsitePerformance.Business.Services
         public IQueryable<LinkViewModel> TestWebsitePerformance(string url)
         {
             //TODO: Add validation LinkViewModel
-
+            url = @"http://" + url;
             website Website = SearchOrAddWebsiteOnDb(url);
 
             //get all links from sitemap of website
