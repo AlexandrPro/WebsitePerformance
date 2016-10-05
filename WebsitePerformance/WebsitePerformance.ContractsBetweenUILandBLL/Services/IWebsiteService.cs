@@ -5,6 +5,7 @@ namespace WebsitePerformance.ContractsBetweenUILandBLL.Services
 {
     public interface IWebsiteService
     {
-        IQueryable<LinkViewModel> TestWebsitePerformance(string url);
+        int TestWebsitePerformance(string url);
+        IQueryable<LinkViewModel> GetLinks(int id);
     }
 }

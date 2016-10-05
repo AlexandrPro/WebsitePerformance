@@ -12,6 +12,7 @@ namespace WebsitePerformance.Business.Services
     {
         IUnitOfWork db;
         string website_url { get; set; }
+        int websiteId;
 
         public WebsiteService(IUnitOfWork uow)
         {
@@ -50,9 +51,10 @@ namespace WebsitePerformance.Business.Services
             return _test;
         }
 
-        public IQueryable<LinkViewModel> TestWebsitePerformance(string url)
+        public int TestWebsitePerformance(string url)
         {
             //TODO: Add validation LinkViewModel
+
             url = @"http://" + url;
             website Website = SearchOrAddWebsiteOnDb(url);
 
@@ -60,32 +62,41 @@ namespace WebsitePerformance.Business.Services
             string SitemapUrl = url + "/sitemap.xml";
             Sitemap sitemap = new Sitemap(SitemapUrl);
             List<string> links_url = sitemap.AllSiteLinks();
-
-            //creation LinksViewModel to output 
-            List<LinkViewModel> linksViewModel = new List<LinkViewModel>();
+            
+            //creation new tests
             foreach(string item in links_url)
             {
-                LinkViewModel linkViewModel = new LinkViewModel();
-                //url
+                //add new link, if necessary
                 link _link = SearchOrAddLinkOnDb(Website.id, item);
-                linkViewModel.Url = _link.url;
-                //last test
-                test _lastTest = db.Tests.Find(t => (t.link_id == _link.id && t.number == _link.test_count)).First();
-                if (_lastTest == null)
-                    linkViewModel.LastTest = 0;
-                else
-                    linkViewModel.LastTest = _lastTest.time;
                 //new test
                 LinkResponseTime linkRT = new LinkResponseTime(_link.url);
                 test _newTest = AddTestOnDb(_link, linkRT.Measure());
-                linkViewModel.NewTest = _newTest.time;
-
-                linksViewModel.Add(linkViewModel);
             }
-            //save changes to db
-            db.Save();
 
-            return linksViewModel.AsQueryable();
+            return Website.id;
+        }
+
+        public IQueryable<LinkViewModel> GetLinks(int id)
+        {
+            List<LinkViewModel> linkViewModels = new List<LinkViewModel>();
+            
+
+            List<link> links = new List<link>(db.Links.Find(l => (l.site_id == id)));
+            foreach (link item in links)
+            {
+                LinkViewModel linkViewModel = new LinkViewModel();
+                linkViewModel.Url = item.url;
+
+                linkViewModel.NewTest = db.Tests.Find(t => (t.link_id == item.id && t.number == item.test_count)).First().time;
+
+                int testCount = item.test_count;
+                if (testCount == 1)
+                    linkViewModel.LastTest = 0;
+                else
+                    linkViewModel.LastTest = db.Tests.Find(t => (t.link_id == item.id && t.number == item.test_count-1)).First().time;
+            }
+
+            return linkViewModels.AsQueryable();
         }
     }
 }
