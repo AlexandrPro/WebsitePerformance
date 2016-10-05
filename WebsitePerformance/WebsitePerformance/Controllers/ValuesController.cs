@@ -20,7 +20,13 @@ namespace WebsitePerformance.Controllers
 
         [HttpGet]
         //public IEnumerable<LinkViewModel> GetLinks([FromBody]string url)
-        public IEnumerable<LinkViewModel> GetLinks(string url)
+        public IEnumerable<LinkViewModel> GetLinks(int id)
+        {
+            return websiteService.GetLinks(id);
+        }
+
+        [HttpPost]
+        public int TestWebsite([FromBody]string url)
         {
             return websiteService.TestWebsitePerformance(url);
         }
