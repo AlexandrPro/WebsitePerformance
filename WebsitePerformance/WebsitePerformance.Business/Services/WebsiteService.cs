@@ -6,7 +6,7 @@ using WebsitePerformance.ContractsBetweenUILandBLL.Services;
 using WebsitePerformance.ContractsBetweenUILandBLL.DTO;
 using WebsitePerformance.BLL.WebsiteAccess;
 
-namespace WebsitePerformance.Business.Services
+namespace WebsitePerformance.BLL.Services
 {
     public class WebsiteService : IWebsiteService
     {

@@ -11,7 +11,7 @@ using WebsitePerformance.ContractsBetweenBLLandDAL.Entities;
 
 namespace WebsitePerformance.DAL.UnitOfWork
 {
-    class EFUnitOfWork : IUnitOfWork
+    public class EFUnitOfWork : IUnitOfWork
     {
         private WebsitePerformanceModel db;
         private EFRepository<website> websiteRepository;
