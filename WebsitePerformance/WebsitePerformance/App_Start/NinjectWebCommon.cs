@@ -12,6 +12,9 @@ namespace WebsitePerformance.App_Start
     using Ninject.Web.Common;
     using Ninject.Modules;
 
+    using System.Web.Http;
+    using Ninject.Web.WebApi;
+
     using WebsitePerformance.MyNinjectModules;
 
     public static class NinjectWebCommon 
@@ -65,6 +68,8 @@ namespace WebsitePerformance.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
+            //System.Web.Mvc.DependencyResolver.SetResolver(new WebsitePerformance.Util.NinjectDependencyResolver(kernel));
+            System.Web.Http.GlobalConfiguration.Configuration.DependencyResolver = new NinjectDependencyResolver(kernel);
         }        
     }
 }

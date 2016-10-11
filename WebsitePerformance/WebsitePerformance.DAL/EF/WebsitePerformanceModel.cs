@@ -8,10 +8,10 @@ namespace WebsitePerformance.DAL.EF
 
     public partial class WebsitePerformanceModel : DbContext
     {
-        public WebsitePerformanceModel()
-            : base("name=WebsitePerformanceModel")
-        {
-        }
+        //public WebsitePerformanceModel()
+        //    : base("name=WebsitePerformanceModel")
+        //{
+        //}
 
         public virtual DbSet<link> link { get; set; }
         public virtual DbSet<test> test { get; set; }
