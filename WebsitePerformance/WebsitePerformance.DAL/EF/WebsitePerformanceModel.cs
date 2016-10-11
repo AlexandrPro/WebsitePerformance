@@ -5,13 +5,14 @@ namespace WebsitePerformance.DAL.EF
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
     using WebsitePerformance.ContractsBetweenBLLandDAL.Entities;
+    using System.Data.SqlClient;
 
     public partial class WebsitePerformanceModel : DbContext
     {
-        //public WebsitePerformanceModel()
-        //    : base("name=WebsitePerformanceModel")
-        //{
-        //}
+        public WebsitePerformanceModel()
+            : base("name=WebsitePerformanceModel")
+        {
+        }
 
         public virtual DbSet<link> link { get; set; }
         public virtual DbSet<test> test { get; set; }

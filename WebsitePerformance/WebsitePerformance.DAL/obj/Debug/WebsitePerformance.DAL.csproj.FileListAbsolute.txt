@@ -4,14 +4,12 @@ C:\Users\Aleks_000\Documents\GitHub\WebsitePerformance\WebsitePerformance\Websit
 C:\Users\Aleks_000\Documents\GitHub\WebsitePerformance\WebsitePerformance\WebsitePerformance.DAL\bin\Debug\EntityFramework.dll
 C:\Users\Aleks_000\Documents\GitHub\WebsitePerformance\WebsitePerformance\WebsitePerformance.DAL\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\Aleks_000\Documents\GitHub\WebsitePerformance\WebsitePerformance\WebsitePerformance.DAL\bin\Debug\MySql.Data.dll
-C:\Users\Aleks_000\Documents\GitHub\WebsitePerformance\WebsitePerformance\WebsitePerformance.DAL\bin\Debug\MySql.Data.Entity.EF5.dll
 C:\Users\Aleks_000\Documents\GitHub\WebsitePerformance\WebsitePerformance\WebsitePerformance.DAL\bin\Debug\MySql.Data.Entity.EF6.dll
 C:\Users\Aleks_000\Documents\GitHub\WebsitePerformance\WebsitePerformance\WebsitePerformance.DAL\bin\Debug\MySql.Fabric.Plugin.dll
 C:\Users\Aleks_000\Documents\GitHub\WebsitePerformance\WebsitePerformance\WebsitePerformance.DAL\bin\Debug\MySql.Web.dll
 C:\Users\Aleks_000\Documents\GitHub\WebsitePerformance\WebsitePerformance\WebsitePerformance.DAL\bin\Debug\EntityFramework.xml
 C:\Users\Aleks_000\Documents\GitHub\WebsitePerformance\WebsitePerformance\WebsitePerformance.DAL\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\Aleks_000\Documents\GitHub\WebsitePerformance\WebsitePerformance\WebsitePerformance.DAL\bin\Debug\MySql.Data.xml
-C:\Users\Aleks_000\Documents\GitHub\WebsitePerformance\WebsitePerformance\WebsitePerformance.DAL\bin\Debug\MySql.Data.Entity.EF5.xml
 C:\Users\Aleks_000\Documents\GitHub\WebsitePerformance\WebsitePerformance\WebsitePerformance.DAL\bin\Debug\MySql.Data.Entity.EF6.xml
 C:\Users\Aleks_000\Documents\GitHub\WebsitePerformance\WebsitePerformance\WebsitePerformance.DAL\bin\Debug\MySql.Web.xml
 C:\Users\Aleks_000\Documents\GitHub\WebsitePerformance\WebsitePerformance\WebsitePerformance.DAL\obj\Debug\WebsitePerformance.DAL.dll
