@@ -3,9 +3,71 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Тут будет все</h2>
 <div id="searchBlock">
-    <p>Введите ссылку на сайт, например codeinlife.ru</p>
+    <h2>Введите ссылку на сайт, например codeinlife.ru</h2>
     <input type="search" id="searchLine" />
-    <button id="testWebsite">Test</button>
+    <button id="testWebsite">Тестировать</button>
 </div>
+
+<div id="tableBlock">
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        defaultView();
+
+        $('#testWebsite').click(function (event) {
+            event.preventDefault();
+            postSiteUrl();
+        });
+    });
+
+    function defaultView() {
+        $('#tableBlock').css('display', 'none');
+    }
+
+    function postSiteUrl() {
+        $('#tableBlock').css('display', 'block');
+
+        var site = $('#searchLine').val().trim();
+        if ($('#searchLine').val() != '') {
+            $.ajax({
+                url: '/api/values',
+                type: 'POST',
+                data: JSON.stringify(site),
+                contentType: "application/json;charset=utf-8",
+                success: function (data) {
+                    GetAllLinksTest(data);
+                },
+                error: function (x, y, z) {
+                    alert(x + '\n' + y + '\n' + z);
+                }
+            });
+        }
+    }
+
+    function GetAllLinksTest(id) {
+        $.ajax({
+            url: '/api/values/' + id,
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                WriteResponse(data);
+            },
+            error: function (x, y, z) {
+                alert(x + '\n' + y + '\n' + z);
+            }
+        });
+    }
+
+    function WriteResponse(links) {
+        var strResult = "<table><th>Ссылка</th><th>Предыдущий тест</th><th>Новый тест</th>";
+        $.each(links, function (index, link) {
+            strResult += "<tr><td> " + link.Url + "</td><td>" +
+            link.LastTest + "</td><td>" + link.NewTest + "</td></tr>";
+        });
+        strResult += "</table>";
+        $("#tableBlock").html(strResult);
+    }
+</script>

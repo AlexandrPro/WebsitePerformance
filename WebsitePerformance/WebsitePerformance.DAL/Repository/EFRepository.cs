@@ -20,6 +20,7 @@ namespace WebsitePerformance.DAL.Repository
         public void Create(T entity)
         {
             _entities.Add(entity);
+            _context.SaveChanges();
         }
 
         public void Delete(int id)
@@ -27,11 +28,13 @@ namespace WebsitePerformance.DAL.Repository
             var entity = Get(id);
             if (entity != null)
                 _entities.Remove(entity);
+            _context.SaveChanges();
         }
 
         public void Update(T entity)
         {
             _context.Entry(entity).State = EntityState.Modified;
+            _context.SaveChanges();
         }
 
         public IEnumerable<T> Find(Func<T, Boolean> predicate)

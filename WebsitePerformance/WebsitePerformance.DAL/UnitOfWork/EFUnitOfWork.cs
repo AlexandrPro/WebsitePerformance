@@ -55,7 +55,7 @@ namespace WebsitePerformance.DAL.UnitOfWork
 
         public void Save()
         {
-            db.SaveChanges();
+            //db.SaveChanges();
         }
 
         private bool disposed = false;

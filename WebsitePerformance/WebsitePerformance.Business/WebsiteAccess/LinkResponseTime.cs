@@ -13,8 +13,8 @@ namespace WebsitePerformance.BLL.WebsiteAccess
         public LinkResponseTime(string link)
         {
             this.link = link;
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(link);
-            Stopwatch stopWatch = new Stopwatch();
+            request = (HttpWebRequest)WebRequest.Create(link);
+            stopWatch = new Stopwatch();
         }
 
         public float Measure()

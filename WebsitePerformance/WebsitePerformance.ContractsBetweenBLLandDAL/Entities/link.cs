@@ -16,7 +16,7 @@ namespace WebsitePerformance.ContractsBetweenBLLandDAL.Entities
         public int id { get; set; }
 
         [Required]
-        [StringLength(50)]
+        [StringLength(100)]
         public string url { get; set; }
 
         public int site_id { get; set; }

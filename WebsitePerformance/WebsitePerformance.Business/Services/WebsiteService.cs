@@ -12,17 +12,21 @@ namespace WebsitePerformance.BLL.Services
     {
         IUnitOfWork db;
         string website_url { get; set; }
-        int websiteId;
 
         public WebsiteService(IUnitOfWork uow)
         {
             this.db = uow;
         }
 
-        private website SearchOrAddWebsiteOnDb(string _url) 
+        private website SearchOrAddWebsiteOnDb(string _url)
         {
             //TODO: Add validation website
-            website _website = db.Websites.Find(w => (w.url == _url)).First();
+            website _website = null;
+            try
+            {
+                _website = db.Websites.Find(w => (w.url == _url)).First();
+            }
+            catch { }
             if (_website == null)
             {
                 _website = new website() { url = _url };
@@ -35,10 +39,16 @@ namespace WebsitePerformance.BLL.Services
         private link SearchOrAddLinkOnDb(int website_id, string _url)
         {
             //TODO: Add validation link
-            link _link = db.Links.Find(l => (l.site_id == website_id && l.url == _url)).First();
+            link _link = null;
+            try
+            {
+                _link = db.Links.Find(l => (l.site_id == website_id && l.url == _url)).First();
+            }
+            catch { }
             if (_link == null)
             {
                 _link = new link() { site_id = website_id, url = _url, test_count = 0 };
+                db.Links.Create(_link);
             }
             return _link;
         }
@@ -47,7 +57,8 @@ namespace WebsitePerformance.BLL.Services
         {
             //TODO: Add validation test
             _link.test_count++;
-            test _test = new test() { link_id = _link.site_id, number = _link.test_count, time = testTime };
+            test _test = new test() { link_id = _link.id, number = _link.test_count, time = testTime };
+            db.Tests.Create(_test);
             return _test;
         }
 
@@ -73,6 +84,8 @@ namespace WebsitePerformance.BLL.Services
                 test _newTest = AddTestOnDb(_link, linkRT.Measure());
             }
 
+            db.Save();
+
             return Website.id;
         }
 
@@ -94,6 +107,8 @@ namespace WebsitePerformance.BLL.Services
                     linkViewModel.LastTest = 0;
                 else
                     linkViewModel.LastTest = db.Tests.Find(t => (t.link_id == item.id && t.number == item.test_count-1)).First().time;
+
+                linkViewModels.Add(linkViewModel);
             }
 
             return linkViewModels.AsQueryable();
