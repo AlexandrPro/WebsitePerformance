@@ -9,8 +9,10 @@
     <button id="testWebsite">Тестировать</button>
 </div>
 
-<div id="tableBlock">
-</div>
+<div id="loadingBlock"><h2>Идет тестирование...</h2></div>
+
+<div id="tableBlock"></div>
+
 
 <script type="text/javascript">
     $(document).ready(function () {
@@ -19,12 +21,17 @@
 
         $('#testWebsite').click(function (event) {
             event.preventDefault();
+            $('#loadingBlock').css('display', 'block');
             postSiteUrl();
+            
         });
+
+        
     });
 
     function defaultView() {
         $('#tableBlock').css('display', 'none');
+        $('#loadingBlock').css('display', 'none');
     }
 
     function postSiteUrl() {
@@ -68,6 +75,9 @@
             link.LastTest + "</td><td>" + link.NewTest + "</td></tr>";
         });
         strResult += "</table>";
+
+        $('#loadingBlock').css('display', 'none');
+
         $("#tableBlock").html(strResult);
     }
 </script>

@@ -11,9 +11,9 @@ namespace WebsitePerformance.ContractsBetweenUILandBLL.DTO
         public string Url { get; set; }
 
         [Required]
-        public double LastTest { get; set;}
+        public float LastTest { get; set;}
 
         [Required]
-        public double NewTest { get; set; }
+        public float NewTest { get; set; }
     }
 }

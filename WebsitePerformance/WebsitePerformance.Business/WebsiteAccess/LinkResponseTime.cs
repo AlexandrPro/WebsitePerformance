@@ -27,7 +27,7 @@ namespace WebsitePerformance.BLL.WebsiteAccess
 
             TimeSpan ts = stopWatch.Elapsed;
 
-            float time = (float)ts.Seconds + (float)ts.Milliseconds / 1000.0f;
+            float time = (float)ts.Seconds + (float)(ts.Milliseconds / 1000.0f);
             return time;
         }
     }
