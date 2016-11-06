@@ -19,7 +19,6 @@ namespace WebsitePerformance.Controllers
         }
 
         [HttpGet]
-        //public IEnumerable<LinkViewModel> GetLinks([FromBody]string url)
         public IEnumerable<LinkViewModel> GetLinks(int id)
         {
             return websiteService.GetLinks(id);
@@ -28,7 +27,26 @@ namespace WebsitePerformance.Controllers
         [HttpPost]
         public int TestWebsite([FromBody]string url)
         {
-            return websiteService.TestWebsitePerformance(url);
+            try
+            {
+                return websiteService.TestWebsitePerformance(url);
+            }
+            catch (Exception e)
+            {
+                //throw new HttpResponseException(Request.CreateErrorResponse(HttpStatusCode.NotFound, e.Message));//????
+                
+                var resp = new HttpResponseMessage(HttpStatusCode.NotFound)
+                {
+                    ReasonPhrase = e.Message
+                };
+                throw new HttpResponseException(resp);
+                
+
+                /*
+                 * Обязательно прописать в Global.asax  :
+                 * GlobalConfiguration.Configuration.IncludeErrorDetailPolicy = IncludeErrorDetailPolicy.Never;
+                 */
+            }
         }
 
     }

@@ -9,7 +9,7 @@
     <button id="testWebsite">Тестировать</button>
 </div>
 
-<div id="loadingBlock"><h2>Идет тестирование...</h2></div>
+<div id="statusBlock">Проверка</div>
 
 <div id="tableBlock"></div>
 
@@ -21,7 +21,9 @@
 
         $('#testWebsite').click(function (event) {
             event.preventDefault();
-            $('#loadingBlock').css('display', 'block');
+            $('#statusBlock').css('display', 'block');
+            var a = document.getElementById('statusBlock');
+            a.innerHTML = 'Идет тестирование...';//
             postSiteUrl();
             
         });
@@ -31,7 +33,7 @@
 
     function defaultView() {
         $('#tableBlock').css('display', 'none');
-        $('#loadingBlock').css('display', 'none');
+        $('#statusBlock').css('display', 'none');
     }
 
     function postSiteUrl() {
@@ -47,8 +49,10 @@
                 success: function (data) {
                     GetAllLinksTest(data);
                 },
-                error: function (x, y, z) {
-                    alert(x + '\n' + y + '\n' + z);
+                error: function (StatusCode, Message, errorThrown) {
+                    //alert(StatusCode + "; " + Message + "; " + errorThrown);
+                    var a = document.getElementById('statusBlock');
+                    a.innerHTML = 'Ошибка: \n' + StatusCode + '\n' + Message + '\n' + errorThrown;
                 }
             });
         }
@@ -76,7 +80,7 @@
         });
         strResult += "</table>";
 
-        $('#loadingBlock').css('display', 'none');
+        $('#statusBlock').css('display', 'none');
 
         $("#tableBlock").html(strResult);
     }

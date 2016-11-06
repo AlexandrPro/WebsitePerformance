@@ -5,13 +5,13 @@ using WebsitePerformance.ContractsBetweenBLLandDAL.Entities;
 using WebsitePerformance.ContractsBetweenUILandBLL.Services;
 using WebsitePerformance.ContractsBetweenUILandBLL.DTO;
 using WebsitePerformance.BLL.WebsiteAccess;
+using System;
 
 namespace WebsitePerformance.BLL.Services
 {
     public class WebsiteService : IWebsiteService
     {
         IUnitOfWork db;
-        string website_url { get; set; }
 
         public WebsiteService(IUnitOfWork uow)
         {
@@ -65,29 +65,43 @@ namespace WebsitePerformance.BLL.Services
         public int TestWebsitePerformance(string url)
         {
             //TODO: Add validation LinkViewModel
-
-            url = @"http://" + url;
-            website Website = SearchOrAddWebsiteOnDb(url);
-
-            //get all links from sitemap of website
-            string SitemapUrl = url + "/sitemap.xml";
-            Sitemap sitemap = new Sitemap(SitemapUrl);
-            List<string> links_url = sitemap.AllSiteLinks();
-            
-            //creation new tests
-            foreach(string item in links_url)
+            try
             {
-                //add new link, if necessary
-                link _link = SearchOrAddLinkOnDb(Website.id, item);
-                //new test
-                LinkResponseTime linkRT = new LinkResponseTime(_link.url);
-                test _newTest = AddTestOnDb(_link, linkRT.Measure());
+                UrlRework(ref url);
+                LinkResponseTime urlRT = new LinkResponseTime(url);
+                urlRT.Measure();
+
+                website Website = SearchOrAddWebsiteOnDb(url);
+
+                //get all links from sitemap of website
+                Sitemap sitemap = new Sitemap(url + "/sitemap.xml");
+                List<string> links_url = sitemap.AllSiteLinks();
+
+                //creation new tests
+                foreach (string item in links_url)
+                {
+                    //add new link, if necessary
+                    link _link = SearchOrAddLinkOnDb(Website.id, item);
+                    //new test
+                    LinkResponseTime linkRT = new LinkResponseTime(_link.url);
+                    test _newTest = AddTestOnDb(_link, linkRT.Measure());
+                }
+
+                db.Save();
+
+                return Website.id;
+            } catch (Exception)
+            {
+                throw;
             }
-
-            db.Save();
-
-            return Website.id;
         }
+
+        void UrlRework(ref string url)
+        {
+            if (!(url.Contains("http://") || url.Contains("https://")))
+                url = "http://" + url;
+        }
+
 
         public IQueryable<LinkViewModel> GetLinks(int id)
         {

@@ -8,27 +8,30 @@ namespace WebsitePerformance.BLL.WebsiteAccess
     {
         string link;
         HttpWebRequest request;
-        Stopwatch stopWatch;
+        Stopwatch Watch;
 
         public LinkResponseTime(string link)
         {
             this.link = link;
             request = (HttpWebRequest)WebRequest.Create(link);
-            stopWatch = new Stopwatch();
+            Watch = new Stopwatch();
         }
 
         public float Measure()
         {
-            stopWatch.Start();
-            using (WebResponse response = request.GetResponse())
+            try
             {
+                Watch.Start();
+
+                using (WebResponse response = request.GetResponse()) { }
+
+                Watch.Stop();
+                TimeSpan ts = Watch.Elapsed;
+                return (float)ts.Seconds + (float)(ts.Milliseconds / 1000.0f);
+            } catch (Exception)
+            {
+                throw;
             }
-            stopWatch.Stop();
-
-            TimeSpan ts = stopWatch.Elapsed;
-
-            float time = (float)ts.Seconds + (float)(ts.Milliseconds / 1000.0f);
-            return time;
         }
     }
 }
