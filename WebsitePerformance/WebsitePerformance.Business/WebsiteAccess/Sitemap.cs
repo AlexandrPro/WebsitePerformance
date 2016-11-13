@@ -20,26 +20,21 @@ namespace WebsitePerformance.BLL.WebsiteAccess
         
         public List<string> AllSiteLinks()
         {
-            return SearchLinks(sitemapUrl);
+            XmlDocument doc = LoadSitemap(sitemapUrl);
+            return SearchLinks(doc);
         }
 
-        private List<string> SearchLinks(string sitemapLink)
+        public List<string> SearchLinks(XmlDocument doc)
         {
-            //load sitemap.xml from URL
-            WebClient client = new WebClient();
-            Stream stream = client.OpenRead(sitemapLink);
-            XmlDocument sitemap = new XmlDocument();
-            sitemap.Load(stream);
-
-            //search all links on XML file stream
             List<string> links = new List<string>();
             string link;
-            foreach (XmlNode node in sitemap.DocumentElement)
+            foreach (XmlNode node in doc.DocumentElement)
             {
                 link = string.Format(node.FirstChild.InnerText);
                 if (link.Contains(".xml"))
                 {
-                    links.AddRange(SearchLinks(link));
+                    XmlDocument newDoc = LoadSitemap(link);
+                    links.AddRange(SearchLinks(newDoc));
                 }
                 else
                 {
@@ -47,6 +42,13 @@ namespace WebsitePerformance.BLL.WebsiteAccess
                 }
             }
             return links;
+        }
+
+        public XmlDocument LoadSitemap(string link)
+        {
+            XmlDocument doc = new XmlDocument();
+            doc.Load(link);
+            return doc;
         }
     }
 }

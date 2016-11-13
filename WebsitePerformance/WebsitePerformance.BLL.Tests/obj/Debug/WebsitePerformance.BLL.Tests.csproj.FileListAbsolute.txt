@@ -1,0 +1,11 @@
+C:\Users\Aleks_000\Documents\GitHub\WebsitePerformance\WebsitePerformance\WebsitePerformance.BLL.Tests\bin\Debug\WebsitePerformance.BLL.Tests.dll
+C:\Users\Aleks_000\Documents\GitHub\WebsitePerformance\WebsitePerformance\WebsitePerformance.BLL.Tests\bin\Debug\WebsitePerformance.BLL.Tests.pdb
+C:\Users\Aleks_000\Documents\GitHub\WebsitePerformance\WebsitePerformance\WebsitePerformance.BLL.Tests\bin\Debug\WebsitePerformance.Business.dll
+C:\Users\Aleks_000\Documents\GitHub\WebsitePerformance\WebsitePerformance\WebsitePerformance.BLL.Tests\bin\Debug\WebsitePerformance.ContractsBetweenUILandBLL.dll
+C:\Users\Aleks_000\Documents\GitHub\WebsitePerformance\WebsitePerformance\WebsitePerformance.BLL.Tests\bin\Debug\WebsitePerformance.ContractsBetweenBLLandDAL.dll
+C:\Users\Aleks_000\Documents\GitHub\WebsitePerformance\WebsitePerformance\WebsitePerformance.BLL.Tests\bin\Debug\WebsitePerformance.Business.pdb
+C:\Users\Aleks_000\Documents\GitHub\WebsitePerformance\WebsitePerformance\WebsitePerformance.BLL.Tests\bin\Debug\WebsitePerformance.ContractsBetweenUILandBLL.pdb
+C:\Users\Aleks_000\Documents\GitHub\WebsitePerformance\WebsitePerformance\WebsitePerformance.BLL.Tests\bin\Debug\WebsitePerformance.ContractsBetweenBLLandDAL.pdb
+C:\Users\Aleks_000\Documents\GitHub\WebsitePerformance\WebsitePerformance\WebsitePerformance.BLL.Tests\obj\Debug\WebsitePerformance.BLL.Tests.csprojResolveAssemblyReference.cache
+C:\Users\Aleks_000\Documents\GitHub\WebsitePerformance\WebsitePerformance\WebsitePerformance.BLL.Tests\obj\Debug\WebsitePerformance.BLL.Tests.dll
+C:\Users\Aleks_000\Documents\GitHub\WebsitePerformance\WebsitePerformance\WebsitePerformance.BLL.Tests\obj\Debug\WebsitePerformance.BLL.Tests.pdb

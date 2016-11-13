@@ -98,8 +98,20 @@ namespace WebsitePerformance.BLL.Services
 
         void UrlRework(ref string url)
         {
-            if (!(url.Contains("http://") || url.Contains("https://")))
+            if (url.Contains("https://"))
+            {
+                int n = url.IndexOf("https://");
+                url.Remove(n, "https://".Length);
                 url = "http://" + url;
+            }
+            if (!url.Contains("http://"))
+            {
+                url = "http://" + url;
+            }
+            if (url.EndsWith(@"/"))
+            {
+                url.Remove(url.Length - 1, 1);
+            }
         }
 
 
