@@ -33,14 +33,17 @@ namespace WebsitePerformance.Controllers
             }
             catch (Exception e)
             {
-                //throw new HttpResponseException(Request.CreateErrorResponse(HttpStatusCode.NotFound, e.Message));//????
-                
+                /*
                 var resp = new HttpResponseMessage(HttpStatusCode.NotFound)
                 {
                     ReasonPhrase = e.Message
-                };
-                throw new HttpResponseException(resp);
+                };*/
                 
+                HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.NotFound);
+                response.ReasonPhrase = e.Message;
+                response.Content = new StringContent(e.Message, System.Text.Encoding.UTF8);
+                HttpResponseException httpEx = new HttpResponseException(response);
+                throw httpEx;
 
                 /*
                  * Обязательно прописать в Global.asax  :

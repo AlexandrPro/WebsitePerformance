@@ -49,10 +49,9 @@
                 success: function (data) {
                     GetAllLinksTest(data);
                 },
-                error: function (StatusCode, Message, errorThrown) {
-                    //alert(StatusCode + "; " + Message + "; " + errorThrown);
+                error: function (a, b, c) {
                     var a = document.getElementById('statusBlock');
-                    a.innerHTML = 'Ошибка: \n' + StatusCode + '\n' + Message + '\n' + errorThrown;
+                    a.innerHTML = 'Ошибка: '  + c ;
                 }
             });
         }
